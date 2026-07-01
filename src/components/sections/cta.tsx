@@ -63,7 +63,7 @@ export function CtaSection() {
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Link>
           
-          <Link href="#docs" className="w-full sm:w-auto flex h-14 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-8 text-base font-semibold text-white transition-all hover:bg-white/10 active:scale-95 backdrop-blur-md">
+          <Link href="/docs" className="w-full sm:w-auto flex h-14 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-8 text-base font-semibold text-white transition-all hover:bg-white/10 active:scale-95 backdrop-blur-md">
             Read Documentation
           </Link>
         </motion.div>

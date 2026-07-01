@@ -1,12 +1,11 @@
-import { HeroSection } from "@/components/sections/hero";
-import { TrustedBy } from "@/components/sections/trusted-by";
-import { BentoGrid } from "@/components/sections/bento-grid";
-import { Workflow } from "@/components/sections/workflow";
-import { CtaSection } from "@/components/sections/cta";
-import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
-export default function Home() {
+export default function MarketingLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <div className="relative min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       {/* Architectural Grid Background */}
@@ -15,13 +14,9 @@ export default function Home() {
       </div>
 
       <Navbar />
-      
+
       <main className="relative z-10 mx-auto max-w-[1400px] border-x border-border/40 px-4 md:px-8">
-        <HeroSection />
-        <TrustedBy />
-        <BentoGrid />
-        <Workflow />
-        <CtaSection />
+        {children}
       </main>
 
       <Footer />

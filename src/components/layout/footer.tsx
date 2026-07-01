@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Command, ArrowRight } from "lucide-react";
 import { SiGithub, SiX } from "@icons-pack/react-simple-icons";
 
@@ -29,22 +30,22 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-5 text-white">Product</h4>
             <ul className="space-y-3 text-sm text-zinc-400">
-              <li><a href="#" className="hover:text-white transition-colors">Engine v2</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Components</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Integrations</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Changelog</a></li>
+              <li><Link href="/features" className="hover:text-white transition-colors">Engine v2</Link></li>
+              <li><Link href="/features" className="hover:text-white transition-colors">Components</Link></li>
+              <li><Link href="/features" className="hover:text-white transition-colors">Integrations</Link></li>
+              <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/features" className="hover:text-white transition-colors">Changelog</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold mb-5 text-white">Resources</h4>
             <ul className="space-y-3 text-sm text-zinc-400">
-              <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">API Reference</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Community</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Templates</a></li>
+              <li><Link href="/docs" className="hover:text-white transition-colors">Documentation</Link></li>
+              <li><Link href="/docs" className="hover:text-white transition-colors">API Reference</Link></li>
+              <li><Link href="/docs" className="hover:text-white transition-colors">Blog</Link></li>
+              <li><Link href="/docs" className="hover:text-white transition-colors">Community</Link></li>
+              <li><Link href="/docs" className="hover:text-white transition-colors">Templates</Link></li>
             </ul>
           </div>
           
@@ -75,8 +76,8 @@ export function Footer() {
               <span className="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse" />
               All systems operational
             </span>
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <Link href="/docs" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/docs" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
