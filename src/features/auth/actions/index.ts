@@ -13,7 +13,7 @@ export async function onBoardUser() {
 
     const clerkUser = await currentUser()
 
-    if (clerkUser) {
+    if (!clerkUser) {
         return
     }
 
