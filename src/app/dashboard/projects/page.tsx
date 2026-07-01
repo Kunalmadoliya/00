@@ -110,11 +110,9 @@ export default function ProjectsPage() {
         
         <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-dashed border-border/60">
+            <DropdownMenuTrigger render={<Button variant="outline" size="sm" className="h-9 border-dashed border-border/60" />}>
                 <Filter className="mr-2 h-4 w-4 text-muted-foreground" />
                 Status
-              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem>All Projects</DropdownMenuItem>
@@ -125,11 +123,9 @@ export default function ProjectsPage() {
           </DropdownMenu>
 
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-dashed border-border/60">
+            <DropdownMenuTrigger render={<Button variant="outline" size="sm" className="h-9 border-dashed border-border/60" />}>
                 <ArrowUpDown className="mr-2 h-4 w-4 text-muted-foreground" />
                 Sort
-              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem>Last updated</DropdownMenuItem>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   Bot, 
   User, 
@@ -20,7 +20,6 @@ import {
   DropdownMenuItem, 
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 // Dummy conversation data
@@ -115,12 +114,10 @@ export default function ChatPage() {
         {/* Model Selector Bar */}
         <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between p-4 bg-background/80 backdrop-blur-md border-b">
           <DropdownMenu>
-            <DropdownMenuTrigger >
-              <Button variant="outline" size="sm" className="rounded-full shadow-sm">
+            <DropdownMenuTrigger render={<Button variant="outline" size="sm" className="rounded-full shadow-sm" />}>
                 <Sparkles className="h-4 w-4 mr-2 text-primary" />
                 Gemini 3.1 Pro
                 <ChevronDown className="h-4 w-4 ml-2 text-muted-foreground" />
-              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem className="font-medium">Gemini 3.1 Pro <span className="ml-auto text-xs text-muted-foreground">Advanced</span></DropdownMenuItem>
@@ -268,7 +265,7 @@ export default function ChatPage() {
 }
 
 // Temporary icon fix since it wasn't imported at top
-function MessageSquare(props:any) {
+function MessageSquare(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

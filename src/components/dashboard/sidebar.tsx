@@ -45,11 +45,7 @@ export function Sidebar() {
       <div className="flex flex-col flex-grow pt-5 overflow-y-auto">
         <div className="flex items-center flex-shrink-0 px-4 mb-6">
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="w-full flex items-center justify-between px-2 py-1.5 hover:bg-accent/50 rounded-lg h-auto"
-              >
+            <DropdownMenuTrigger render={<Button variant="ghost" className="w-full flex items-center justify-between px-2 py-1.5 hover:bg-accent/50 rounded-lg h-auto" />}>
                 <div className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                     <Hexagon className="h-5 w-5" />
@@ -60,7 +56,6 @@ export function Sidebar() {
                   </div>
                 </div>
                 <ChevronDown className="h-4 w-4 text-muted-foreground" />
-              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-56">
               <DropdownMenuLabel>Workspaces</DropdownMenuLabel>

@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+
 
 const invoices = [
   { id: "INV-2026-001", date: "Jul 1, 2026", amount: "$0.00", status: "Paid" },

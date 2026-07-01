@@ -10,7 +10,7 @@ import {
   MoreHorizontal
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 
 const recentProjects = [
@@ -31,7 +31,7 @@ export default function DashboardHome() {
       >
         <h1 className="text-3xl font-semibold tracking-tight">Good morning, User</h1>
         <p className="text-muted-foreground text-lg max-w-2xl">
-          Here's what's happening with your projects today. Start a new generation or continue where you left off.
+          Here&apos;s what&apos;s happening with your projects today. Start a new generation or continue where you left off.
         </p>
       </motion.section>
 
