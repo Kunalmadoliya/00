@@ -3,6 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal, ArrowRight, Sparkles, Folder, FileCode, CheckCircle2, ChevronRight, Loader2, MousePointer2 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 
 // --- Helpers ---
 const CodeLine = ({ line }: { line: string }) => {
@@ -336,34 +338,68 @@ const IDEPreview = () => {
 
 // --- Prompt Input Component ---
 const HeroPrompt = () => {
+  const [input, setInput] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
+  const router = useRouter();
+  const { isSignedIn } = useUser();
   const text = "Build a minimal task management dashboard...";
   const [typed, setTyped] = useState("");
   
   useEffect(() => {
+    if (isFocused) return;
     let i = 0;
     const interval = setInterval(() => {
       setTyped(text.slice(0, i));
       i++;
-      if (i > text.length + 10) { // Keep cursor blinking at the end for a bit
+      if (i > text.length + 10) {
          clearInterval(interval);
       }
     }, 40);
     return () => clearInterval(interval);
-  }, []);
+  }, [isFocused]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const finalPrompt = input.trim() || typed;
+    if (!finalPrompt) return;
+    
+    sessionStorage.setItem("pending_prompt", finalPrompt);
+    
+    if (isSignedIn) {
+      // Logic for logged in users: the interceptor will pick it up
+      // but to force it, we can reload or redirect
+      window.location.reload();
+    } else {
+      router.push("/sign-in");
+    }
+  };
 
   return (
-    <div className="group relative flex items-center rounded-2xl border border-border/50 bg-background/50 p-2 shadow-2xl backdrop-blur-xl transition-all hover:shadow-primary/5 hover:border-primary/30 w-full max-w-2xl mx-auto ring-1 ring-white/10 mt-10">
+    <form onSubmit={handleSubmit} className="group relative flex items-center rounded-2xl border border-border/50 bg-background/50 p-2 shadow-2xl backdrop-blur-xl transition-all hover:shadow-primary/5 hover:border-primary/30 w-full max-w-2xl mx-auto ring-1 ring-white/10 mt-10">
       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0 ml-1">
         <Sparkles className="h-5 w-5" />
       </div>
-      <div className="w-full bg-transparent px-4 text-base md:text-lg outline-none flex items-center text-foreground font-medium">
-         <span>{typed}</span>
-         <motion.div animate={{ opacity: [1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} className="w-0.5 h-6 bg-primary ml-1" />
+      <div className="w-full bg-transparent px-4 text-base md:text-lg outline-none flex items-center text-foreground font-medium relative">
+         {!isFocused && !input && (
+           <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-muted-foreground/70">
+             <span>{typed}</span>
+             <motion.div animate={{ opacity: [1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} className="w-0.5 h-6 bg-primary ml-1" />
+           </div>
+         )}
+         <input 
+           type="text"
+           value={input}
+           onChange={(e) => setInput(e.target.value)}
+           onFocus={() => setIsFocused(true)}
+           onBlur={() => setIsFocused(false)}
+           className="w-full bg-transparent outline-none h-12 z-10"
+           placeholder={isFocused ? "Describe your application..." : ""}
+         />
       </div>
-      <button className="flex h-12 items-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-95 shrink-0 shadow-md">
+      <button type="submit" className="flex h-12 items-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-95 shrink-0 shadow-md z-10 relative">
         Generate <ArrowRight className="h-4 w-4" />
       </button>
-    </div>
+    </form>
   )
 }
 

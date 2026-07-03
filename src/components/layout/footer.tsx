@@ -70,7 +70,7 @@ export function Footer() {
         </div>
         
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-500 font-mono">
-          <p>© {new Date().getFullYear()} 00 Inc. All rights reserved.</p>
+          <p>© 2024 00 Inc. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse" />

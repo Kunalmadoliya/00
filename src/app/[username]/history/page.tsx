@@ -26,7 +26,7 @@ const activityData = [
         icon: Zap,
         color: "text-amber-500",
         bgColor: "bg-amber-500/10",
-        link: "/dashboard/projects"
+        link: "#"
       },
       {
         id: "2",
@@ -53,7 +53,7 @@ const activityData = [
         icon: MessageSquare,
         color: "text-emerald-500",
         bgColor: "bg-emerald-500/10",
-        link: "/dashboard/chat"
+        link: "#"
       },
       {
         id: "4",
@@ -64,7 +64,7 @@ const activityData = [
         icon: Settings,
         color: "text-zinc-500",
         bgColor: "bg-zinc-500/10",
-        link: "/dashboard/settings"
+        link: "#"
       }
     ]
   },

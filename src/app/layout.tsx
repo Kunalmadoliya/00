@@ -76,6 +76,8 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
+import { PostLoginInterceptor } from "@/components/layout/post-login-interceptor";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -103,6 +105,7 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
+              <PostLoginInterceptor />
               {children}
             </ThemeProvider>
           </QueryProvider>

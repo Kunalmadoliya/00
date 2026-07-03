@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { Command, Search, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { UserButton } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 
 const navLinks = [
   { href: "/features", label: "Features" },
@@ -16,6 +16,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, isSignedIn } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,10 +71,21 @@ export function Navbar() {
               </kbd>
             </div>
             <div className="w-[1px] h-4 bg-white/10 mx-1 hidden lg:block" />
-             <UserButton/>
-            <Link href="/sign-in" className="rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:scale-105 active:scale-95 shadow-lg">
-              Start Building
-            </Link>
+            {user ? (
+              <Link
+                href={`/${user.username || user.fullName?.toLowerCase().replace(/\s+/g, '-') || user.id}`}
+                className="rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:scale-105 active:scale-95 shadow-lg"
+              >
+                Workspace
+              </Link>
+            ) : (
+              <Link
+                href="/sign-in"
+                className="rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:scale-105 active:scale-95 shadow-lg"
+              >
+                Start Building
+              </Link>
+            )}
           </div>
 
           <button
@@ -115,14 +127,17 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={pathname === link.href ? "text-foreground" : "text-muted-foreground"}
+                    className={
+                      pathname === link.href
+                        ? "text-foreground"
+                        : "text-muted-foreground"
+                    }
                   >
                     {link.label}
                   </Link>
                 ))}
               </nav>
               <div className="mt-auto flex flex-col gap-4">
-
                 <Link
                   href="/sign-in"
                   className="w-full rounded-xl border border-white/10 px-4 py-4 text-center text-lg font-medium transition-colors hover:bg-white/5"
