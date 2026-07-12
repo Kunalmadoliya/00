@@ -24,7 +24,7 @@ export async function onBoardUser() {
         null;
 
 
-    if (!email) {
+     if (!email) {
         return { error: "Failed to get email" }
     }
 
