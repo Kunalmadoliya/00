@@ -6,12 +6,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { UserButton } from "@clerk/nextjs";
 
-const navLinks = [
-  { href: "/features", label: "Features" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/docs", label: "Docs" },
-];
-
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -45,22 +39,6 @@ export function Navbar() {
             <span className="font-bold tracking-tight text-lg">00</span>
           </Link>
 
-          <nav className="hidden md:flex gap-8 text-sm font-medium text-muted-foreground">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`transition-colors ${
-                  pathname === link.href
-                    ? "text-foreground font-semibold"
-                    : "hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
           <div className="hidden md:flex items-center gap-4">
             <div className="group hidden lg:flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground cursor-text">
               <Search className="h-3.5 w-3.5" />
@@ -70,8 +48,11 @@ export function Navbar() {
               </kbd>
             </div>
             <div className="w-[1px] h-4 bg-white/10 mx-1 hidden lg:block" />
-             <UserButton/>
-            <Link href="/sign-in" className="rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:scale-105 active:scale-95 shadow-lg">
+            <UserButton />
+            <Link
+              href="/sign-in"
+              className="rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:scale-105 active:scale-95 shadow-lg"
+            >
               Start Building
             </Link>
           </div>
@@ -109,20 +90,23 @@ export function Navbar() {
                   <X className="h-6 w-6" />
                 </button>
               </div>
-              <nav className="flex flex-col gap-6 text-2xl font-semibold mb-12">
+              {/* <nav className="flex flex-col gap-6 text-2xl font-semibold mb-12">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={pathname === link.href ? "text-foreground" : "text-muted-foreground"}
+                    className={
+                      pathname === link.href
+                        ? "text-foreground"
+                        : "text-muted-foreground"
+                    }
                   >
                     {link.label}
                   </Link>
                 ))}
-              </nav>
+              </nav> */}
               <div className="mt-auto flex flex-col gap-4">
-
                 <Link
                   href="/sign-in"
                   className="w-full rounded-xl border border-white/10 px-4 py-4 text-center text-lg font-medium transition-colors hover:bg-white/5"

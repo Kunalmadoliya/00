@@ -7,7 +7,7 @@ import {
   Download, 
   ArrowUpRight,
   Zap
-} from "lucide-react";
+} from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 
